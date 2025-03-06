@@ -1,7 +1,10 @@
 // src/components/HeroSection.jsx
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       id="home"
@@ -38,8 +41,11 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4"
             >
-              <button className="btn btn-danger text-lg px-8 py-3">
-                Report Emergency
+              <button 
+                className="btn btn-danger text-lg px-8 py-3"
+                onClick={() => navigate('/report')}
+              >
+                Report an Incident
               </button>
               <button className="btn bg-white/10 text-white hover:bg-white/20 text-lg px-8 py-3">
                 Learn More

@@ -2,12 +2,21 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const navigate = useNavigate();
+  
+  // Check if user is logged in - in a real app, this would come from your auth context or state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   useEffect(() => {
+    // Check local storage or session storage for auth token
+    const token = localStorage.getItem('authToken');
+    setIsLoggedIn(!!token);
+    
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
@@ -19,6 +28,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+  
+  const handleDashboardClick = () => {
+    navigate('/portal/dashboard');
+  };
 
   return (
     <nav
@@ -62,7 +79,32 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   {item}
                 </a>
               ))}
-              <button className="btn btn-danger">Report Incident</button>
+              <button 
+                onClick={() => navigate('/report')}
+                className="btn btn-danger"
+              >
+                Report Incident
+              </button>
+              
+              {isLoggedIn ? (
+                <button
+                  onClick={handleDashboardClick}
+                  className={`px-4 py-2 rounded-md font-medium bg-primary-600 hover:bg-primary-700 text-white transition-colors`}
+                >
+                  Dashboard
+                </button>
+              ) : (
+                <button
+                  onClick={handleLoginClick}
+                  className={`px-4 py-2 rounded-md font-medium ${
+                    isScrolled 
+                      ? "bg-primary-600 hover:bg-primary-700 text-white" 
+                      : "bg-white hover:bg-gray-100 text-primary-600"
+                  } transition-colors`}
+                >
+                  Login
+                </button>
+              )}
 
               {/* Dark mode toggle */}
               <button
@@ -135,10 +177,35 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             ))}
             <button
               className="w-full mt-2 btn btn-danger"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                navigate('/report');
+              }}
             >
               Report Incident
             </button>
+            
+            {isLoggedIn ? (
+              <button
+                className="w-full mt-2 px-3 py-2 rounded-md text-base font-medium bg-primary-600 text-white hover:bg-primary-700"
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate('/portal/dashboard');
+                }}
+              >
+                Dashboard
+              </button>
+            ) : (
+              <button
+                className="w-full mt-2 px-3 py-2 rounded-md text-base font-medium bg-primary-600 text-white hover:bg-primary-700"
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate('/login');
+                }}
+              >
+                Login
+              </button>
+            )}
           </div>
         </motion.div>
       )}
