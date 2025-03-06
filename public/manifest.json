@@ -1,5 +1,7 @@
+
 {
-  "short_name": "React App",
+  "_comment":"this is a comment",
+  "short_name": "React ",
   "name": "Create React App Sample",
   "icons": [
     {
