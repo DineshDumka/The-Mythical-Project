@@ -1,4 +1,3 @@
-// src/components/HeroSection.jsx
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -8,76 +7,69 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-700 to-primary-900 text-white overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-800 text-white overflow-hidden"
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00eiIvPjwvZz48L2c+PC9zdmc+')] bg-repeat"></div>
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/hexellence.png')] bg-repeat"></div>
       </div>
 
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8 py-32 md:py-48">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
             >
-              AI-Powered Emergency Response for Smart Cities
+              Smart City Emergency Response System
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl md:text-2xl text-primary-100 mb-8 max-w-lg"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg"
             >
-              Detect, alert, and respond to emergencies faster with our
-              AI-driven platform that connects citizens with emergency services.
+              Real-time incident detection, fast alerts, and quick response. Empowering cities to stay safe with AI-driven technology.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-wrap gap-4"
             >
               <button 
-                className="btn btn-danger text-lg px-8 py-3"
+                className="bg-red-500 hover:bg-red-600 text-white font-bold text-lg px-8 py-3 rounded-2xl shadow-lg transition-transform transform hover:scale-105"
                 onClick={() => navigate('/report')}
               >
                 Report an Incident
               </button>
-              <button className="btn bg-white/10 text-white hover:bg-white/20 text-lg px-8 py-3">
+              <button className="bg-white/10 text-white hover:bg-white/20 font-bold text-lg px-8 py-3 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
                 Learn More
               </button>
             </motion.div>
           </div>
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="hidden lg:block"
           >
             <div className="relative">
-              <div className="absolute -top-6 -left-6 w-64 h-64 bg-primary-500 rounded-full filter blur-3xl opacity-20"></div>
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-secondary-500 rounded-full filter blur-3xl opacity-20"></div>
-              <div className="relative bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-2xl">
+              <div className="relative bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-6 shadow-2xl">
                 <img
-                  src="https://placehold.co/600x400/0284c7/FFFFFF?text=Smart+City+Dashboard"
+                  src="https://placehold.co/600x400/0284c7/FFFFFF?text=Emergency+Dashboard"
                   alt="Smart City Emergency Dashboard"
-                  className="w-full h-auto rounded-lg shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                 />
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                    <div className="text-sm text-primary-200">
-                      Active Alerts
-                    </div>
+                    <div className="text-sm text-gray-300">Active Alerts</div>
                     <div className="text-2xl font-bold">12</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                    <div className="text-sm text-primary-200">
-                      Response Time
-                    </div>
+                    <div className="text-sm text-gray-300">Response Time</div>
                     <div className="text-2xl font-bold">4.2 min</div>
                   </div>
                 </div>
