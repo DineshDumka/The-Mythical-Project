@@ -61,10 +61,10 @@ REACT_APP_FIREBASE_URL=your_firebase_url
 ```
 
 ## 🤝 Contributors
-- **Your Name** (Project Lead)  
-- Team Member 1  
-- Team Member 2  
-- Team Member 3  
+- Gaurav Singh  
+- Dinesh Dumka 
+- Paras Mehta 
+- Himanshu Tiwari 
 
 ## 📄 License
 This project is licensed under the MIT License.
