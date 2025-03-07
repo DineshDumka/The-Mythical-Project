@@ -55,39 +55,69 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 {item}
               </a>
             ))}
-            <button onClick={() => handleNavigation('/report')} className="btn btn-danger">
+            <button 
+              onClick={() => handleNavigation('/report')} 
+              className="bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition-all duration-200"
+            >
               Report Incident
             </button>
 
             {isLoggedIn ? (
-              <button onClick={() => handleNavigation('/portal/dashboard')} className="px-4 py-2 rounded-md bg-primary-600 hover:bg-primary-700 text-white">
+              <button 
+                onClick={() => handleNavigation('/portal/dashboard')} 
+                className="px-4 py-2 rounded-lg bg-black hover:bg-gray-800 text-white font-medium shadow-md transition-all duration-200"
+              >
                 Dashboard
               </button>
             ) : (
-              <button onClick={() => handleNavigation('/login')} className={`px-4 py-2 rounded-md ${isScrolled ? "bg-primary-600 hover:bg-primary-700 text-white" : "bg-white hover:bg-gray-100 text-primary-600"}`}>
+              <button 
+                onClick={() => handleNavigation('/login')} 
+                className={`px-4 py-2 rounded-lg font-medium shadow-md transition-all duration-200 ${
+                  isScrolled 
+                    ? "bg-primary-600 hover:bg-primary-700 text-black" 
+                    : "bg-blue-500 hover:bg-gray-100 text-primary-600"
+                }`}
+              >
                 Login
               </button>
             )}
 
             <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full ${isScrolled ? "bg-gray-100 dark:bg-gray-800" : "bg-white/20"} hover:bg-primary-50 dark:hover:bg-gray-700`}
+              className={`p-2 rounded-full ${
+                isScrolled ? "bg-gray-100 dark:bg-gray-800" : "bg-white/20"
+              } hover:bg-primary-50 dark:hover:bg-gray-700 transition-all duration-200`}
+              aria-label="Toggle dark mode"
             >
-              {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
+              {darkMode ? (
+                <FaSun className="text-yellow-400" />
+              ) : (
+                <FaMoon className={isScrolled ? "text-gray-700" : "text-white"} />
+              )}
             </button>
           </div>
 
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleDarkMode}
-              className={`p-2 mr-2 rounded-full ${isScrolled ? "bg-gray-100 dark:bg-gray-800" : "bg-white/20"} hover:bg-primary-50 dark:hover:bg-gray-700`}
+              className={`p-2 mr-2 rounded-full ${
+                isScrolled ? "bg-gray-100 dark:bg-gray-800" : "bg-white/20"
+              } hover:bg-primary-50 dark:hover:bg-gray-700 transition-all duration-200`}
+              aria-label="Toggle dark mode"
             >
-              {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className={isScrolled ? "text-gray-700" : "text-white"} />}
+              {darkMode ? (
+                <FaSun className="text-yellow-400" />
+              ) : (
+                <FaMoon className={isScrolled ? "text-gray-700" : "text-white"} />
+              )}
             </button>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-md ${isScrolled || isOpen ? "text-gray-700 dark:text-gray-300" : "text-white"} hover:text-primary-600`}
+              className={`p-2 rounded-md ${
+                isScrolled || isOpen ? "text-gray-700 dark:text-gray-300" : "text-white"
+              } hover:text-primary-600 transition-all duration-200`}
+              aria-label="Toggle menu"
             >
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -96,7 +126,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       </div>
 
       {isOpen && (
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="md:hidden bg-white dark:bg-gray-900 shadow-lg">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          exit={{ opacity: 0, y: -20 }} 
+          className="md:hidden bg-white dark:bg-gray-900 shadow-lg"
+        >
           <div className="px-2 pt-2 pb-3 space-y-1">
             {["Home", "Features", "How It Works", "Contact"].map((item) => (
               <a
@@ -109,16 +144,25 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               </a>
             ))}
 
-            <button onClick={() => handleNavigation('/report')} className="w-full mt-2 btn btn-danger">
+            <button 
+              onClick={() => handleNavigation('/report')} 
+              className="w-full mt-2 bg-red-500 hover:bg-red-600 text-white font-medium px-3 py-2 rounded-lg shadow-md transition-all duration-200"
+            >
               Report Incident
             </button>
 
             {isLoggedIn ? (
-              <button onClick={() => handleNavigation('/portal/dashboard')} className="w-full mt-2 px-3 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700">
+              <button 
+                onClick={() => handleNavigation('/portal/dashboard')} 
+                className="w-full mt-2 px-3 py-2 rounded-lg bg-black text-white hover:bg-gray-800 font-medium shadow-md duration-200"
+              >
                 Dashboard
               </button>
             ) : (
-              <button onClick={() => handleNavigation('/login')} className="w-full mt-2 px-3 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700">
+              <button 
+                onClick={() => handleNavigation('/login')} 
+                className="w-full mt-2 px-3 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 font-medium shadow-md transition-all duration-200"
+              >
                 Login
               </button>
             )}
